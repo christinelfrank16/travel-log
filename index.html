@@ -1,45 +1,86 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/styles.css">
 
-    <title>Oh The Places You've Been</title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Oh the Places You've Been</h1>
-      <div class="row">
-        <div class="col-5" id="left">
-          <form id="newPlace" action="index.html" method="post">
-            <label for="placeName">Name Your Place:</label>
-            <input type="text" id="placeName">
-            <br>
-            <label for="memory">Share a brief thought about it.</label>
-            <input type="text" id="memory">
-            <br>
-            <!-- <label for="food">What did you eat here?</label>
-            <input type="text" id="food">
-            <br>
-            <label for="activity">What did you do here?</label>
-            <input type="text" id="activity">
-            <br>
-            <label for="favorite">This is a favorite!</label>
-            <input type="checkbox" id="favorite">
-            <br> -->
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/scripts.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <title>Oh The Places You've Been</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Oh the Places You've Been</h1>
+    <div class="row">
+      <div class="col-5" id="left">
+        <form id="newPlace" action="index.html" method="post">
+          <label for="placeName">Name Your Place:</label>
+          <input type="text" id="placeName">
+          <br>
+          <label for="memory">Share a brief thought about it.</label>
+          <input type="text" id="memory">
+          <br>
+
+          <button type="submit">Add to Travel Log</button>
+        </form>
+        <br>
+        <div class="edit Interface">
+          <form id="editor" action="index.html" method="post">
+            <label for="food">What did you eat here?</label>
+              <input type="text" id="food">
+              <br>
+              <label for="activity">What did you do here?</label>
+              <input type="text" id="activity">
+              <br>
+              <label for="favorite">This is a favorite!</label>
+              <input type="checkbox" id="favorite">
+              <br>
             <button type="submit">Add to Travel Log</button>
           </form>
-        </div>
-        <div class="col-7" id="right">
-          <p id="display">right</p>
-        </div>
 
+      </div>
+
+
+      </div>
+      <div class="col-7" id="right">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <form class="form-inline">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Food</a>
+                  <a class="dropdown-item" href="#">Activity</a>
+                  <a class="dropdown-item" href="#">Memory</a>
+                </div>
+              </li>
+            </ul>
+            <input class="form-control" type="search" placeholder="Search">
+            <button class="btn btn-outline-info" type="submit">Search</button>
+          </form>
+        </nav>
+        <div id="output">
+          <!-- <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Hawaii</h5>
+              <p class="card-text">(Memory) lot of fish!</p>
+              <p class="card-text"><p>
+            </div>
+          </div> -->
+        </div>
       </div>
 
     </div>
 
-  </body>
+  </div>
+
+</body>
+
 </html>

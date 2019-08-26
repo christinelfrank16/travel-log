@@ -10,10 +10,11 @@ $(document).ready(function(){
     // var activity = $("#activity").val();
     // var fav = $("#favorite").attr('checked');
 
-    travelLog.addPlace(name, memory);
+    var newPlace = travelLog.addPlace(name, memory);
+
+    $("#output").append("<div class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + name + "</h5><p class=\"card-text\">" + memory + "</p><p class=\"card-text\"></p><p class=\"card-text\">ID: " + newPlace.id + "</p></div></div>");
   });
 });
-
 
 // Business Logic
 function TravelLog(){
