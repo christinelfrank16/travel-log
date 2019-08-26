@@ -47,6 +47,16 @@ TravelLog.prototype.removePlace = function(id) {
   return false;
 }
 
+TravelLog.prototype.myFavs = function() {
+  var favs = [];
+  for (var i = 0; i < this.log.length; i++) {
+    if (this.log[i] && this.log[i].isFavorite) {
+        favs.push(this.log[i]);
+    }
+  }
+  return favs;
+}
+
 function Place(name, memory = ""){
   this.name = name,
   this.memory = memory,
@@ -58,5 +68,7 @@ Place.prototype.updateMemory = function(memory){
 }
 
 Place.prototype.setFavorite = function(boolean){
-  this.isFavorite = boolean;
+  if (typeof boolean === "boolean") {
+    this.isFavorite = boolean;
+  }
 }
