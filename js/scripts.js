@@ -1,7 +1,17 @@
 // User Interface
+var travelLog = new TravelLog();
 
 $(document).ready(function(){
+  $("#newPlace").submit(function(event){
+    event.preventDefault();
+    var name = $("#placeName").val();
+    var memory = $("#memory").val();
+    // var food = $("#food").val();
+    // var activity = $("#activity").val();
+    // var fav = $("#favorite").attr('checked');
 
+    travelLog.addPlace(name, memory);
+  });
 });
 
 
@@ -11,9 +21,9 @@ function TravelLog(){
   this.currentId = 0
 }
 
-TravelLog.prototype.addPlace = function(name, memory = ""){
+TravelLog.prototype.addPlace = function(name, memory = "", fav = false, foods = [], activities = []){
   if (name) {
-    var place  = new Place(name, memory);
+    var place  = new Place(name, memory, fav, foods, activities);
     place.id = this.assignId();
     this.log.push(place);
     return place;

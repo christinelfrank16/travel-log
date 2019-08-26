@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>Oh The Places You've Been</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Oh the Places You've Been</h1>
+      <div class="row">
+        <div class="col-5" id="left">
+          <form id="newPlace" action="index.html" method="post">
+            <label for="placeName">Name Your Place:</label>
+            <input type="text" id="placeName">
+            <br>
+            <label for="memory">Share a brief thought about it.</label>
+            <input type="text" id="memory">
+            <br>
+            <!-- <label for="food">What did you eat here?</label>
+            <input type="text" id="food">
+            <br>
+            <label for="activity">What did you do here?</label>
+            <input type="text" id="activity">
+            <br>
+            <label for="favorite">This is a favorite!</label>
+            <input type="checkbox" id="favorite">
+            <br> -->
+            <button type="submit">Add to Travel Log</button>
+          </form>
+        </div>
+        <div class="col-7" id="right">
+          <p id="display">right</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
