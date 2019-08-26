@@ -9,10 +9,11 @@ $(document).ready(function(){
     var memory = $("#memory").val();
 
     var newPlace = travelLog.addPlace(name, memory);
-
-    var placeCard = createCard(newPlace);
-
-    $("#output").append(placeCard);
+    if(newPlace){
+      var placeCard = createCard(newPlace);
+      $("#output").append(placeCard);
+    }
+    $("#newPlace").trigger("reset");
   });
 
   $("#editor").submit(function(event) {
@@ -21,16 +22,23 @@ $(document).ready(function(){
     var activity = $("#activity").val();
     var fav = $("#favorite").attr('checked');
     var activePlace = travelLog.getPlace(activeID);
-    activePlace.addFood(food);
-    activePlace.addActivity(activity);
-    activePlace.setFavorite(fav);
-    $("#" + activeID + " #food").text(activePlace.foods.join(", "));
-    $("#" + activeID + " #activity").text(activePlace.activities.join(", "));
-    if (activePlace.foods.length) {
-      $("#" + activeID + " #food").parent().removeClass("hidden");
-    }
-    if (activePlace.activities.length) {
-      $("#" + activeID + " #activity").parent().removeClass("hidden");
+    if(activePlace){
+      activePlace.setFavorite(fav);
+      if(food){
+        activePlace.addFood(food);
+        $("#" + activeID + " #food").text(activePlace.foods.join(", "));
+      }
+      if(activity){
+        activePlace.addActivity(activity);
+        $("#" + activeID + " #activity").text(activePlace.activities.join(", "));
+      }
+      if (activePlace.foods.length) {
+        $("#" + activeID + " #food").parent().removeClass("hidden");
+      }
+      if (activePlace.activities.length) {
+        $("#" + activeID + " #activity").parent().removeClass("hidden");
+      }
+      $("#editor").trigger("reset");
     }
   });
 
