@@ -57,6 +57,16 @@ TravelLog.prototype.myFavs = function() {
   return favs;
 }
 
+TravelLog.prototype.countPlaces = function() {
+  var count = 0;
+  for (var i = 0; i < this.log.length; i++) {
+    if (this.log[i]) {
+      count++;
+    }
+  }
+  return count;
+}
+
 function Place(name, memory = ""){
   this.name = name,
   this.memory = memory,
