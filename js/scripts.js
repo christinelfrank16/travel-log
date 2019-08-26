@@ -16,6 +16,7 @@ TravelLog.prototype.addPlace = function(name, memory = ""){
     var place  = new Place(name, memory);
     place.id = this.assignId();
     this.log.push(place);
+    return place;
   }
 }
 
@@ -67,10 +68,27 @@ TravelLog.prototype.countPlaces = function() {
   return count;
 }
 
-function Place(name, memory = ""){
+TravelLog.prototype.getSimilarPlaces = function(propertyName, searchText){
+  var places = [];
+  for (var i = 0; i < this.log.length; i++){
+    if(this.log[i]){
+      for(var j = 0; j < this.log[i][propertyName].length; j++){
+        if(this.log[i][propertyName][j].toLowerCase().includes(searchText.toLowerCase())){
+          places.push(this.log[i]);
+          break;
+        }
+      }
+    }
+  }
+  return places;
+}
+
+function Place(name, memory = "", fav = false, foods = [], activities = []){
   this.name = name,
   this.memory = memory,
-  this.isFavorite = false
+  this.isFavorite = fav,
+  this.foods = foods,
+  this.activities = activities
 }
 
 Place.prototype.updateMemory = function(memory){
@@ -81,4 +99,12 @@ Place.prototype.setFavorite = function(boolean){
   if (typeof boolean === "boolean") {
     this.isFavorite = boolean;
   }
+}
+
+Place.prototype.addFood = function(food) {
+  this.foods = this.foods.concat(food);
+}
+
+Place.prototype.addActivity = function(activity) {
+  this.activities = this.activities.concat(activity);
 }
