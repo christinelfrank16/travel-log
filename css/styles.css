@@ -6,3 +6,7 @@ form {
   background-color: skyblue;
   border: white;
 }
+
+.hidden {
+  display: none;
+}

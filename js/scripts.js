@@ -1,5 +1,6 @@
 // User Interface
 var travelLog = new TravelLog();
+var activeID;
 
 $(document).ready(function(){
   $("#newPlace").submit(function(event){
@@ -19,21 +20,31 @@ $(document).ready(function(){
     var food = $("#food").val();
     var activity = $("#activity").val();
     var fav = $("#favorite").attr('checked');
-
+    var activePlace = travelLog.getPlace(activeID);
+    activePlace.addFood(food);
+    activePlace.addActivity(activity);
+    activePlace.setFavorite(fav);
+    $("#" + activeID + " #food").text(activePlace.foods.join(", "));
+    $("#" + activeID + " #activity").text(activePlace.activities.join(", "));
+    if (activePlace.foods.length) {
+      $("#" + activeID + " #food").parent().removeClass("hidden");
+    }
+    if (activePlace.activities.length) {
+      $("#" + activeID + " #activity").parent().removeClass("hidden");
+    }
   });
 
   $("#output").on("click", function(event){
-    var pos = event.target.closest(".card").id;
+    activeID = parseInt(event.target.closest(".card").id);
     $("#output").children().removeClass("active");
-    $("#"+pos).toggleClass("active");
+    $("#"+activeID).toggleClass("active");
   });
 
 
 });
 
 function createCard(place){
-  var cardString = "<div id=\"" + place.id + "\" class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + place.name + "</h5><p class=\"card-text\">" + place.memory + "</p><p class=\"card-text\"></p><p class=\"card-text\">ID: " + place.id + "</p></div></div>";
-
+  var cardString = "<div id=\"" + place.id + "\" class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + place.name + "</h5><p class=\"card-text\">" + place.memory + "</p><p class=\"card-text hidden\">Food I ate here: <span id=\"food\">" + place.foods.join(", ") + "</span></p><p class=\"card-text hidden\">Activities I did here: <span id=\"activity\">" + place.activities.join(", ") + "</span></p><p class=\"card-text\"></p><p class=\"card-text\">ID: " + place.id + "</p></div></div>";
   return cardString;
 }
 
