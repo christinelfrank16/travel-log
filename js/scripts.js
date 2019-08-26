@@ -6,15 +6,36 @@ $(document).ready(function(){
     event.preventDefault();
     var name = $("#placeName").val();
     var memory = $("#memory").val();
-    // var food = $("#food").val();
-    // var activity = $("#activity").val();
-    // var fav = $("#favorite").attr('checked');
 
     var newPlace = travelLog.addPlace(name, memory);
 
-    $("#output").append("<div class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + name + "</h5><p class=\"card-text\">" + memory + "</p><p class=\"card-text\"></p><p class=\"card-text\">ID: " + newPlace.id + "</p></div></div>");
+    var placeCard = createCard(newPlace);
+
+    $("#output").append(placeCard);
   });
+
+  $("#editor").submit(function(event) {
+    event.preventDefault();
+    var food = $("#food").val();
+    var activity = $("#activity").val();
+    var fav = $("#favorite").attr('checked');
+
+  });
+
+  $("#output").on("click", function(event){
+    var pos = event.target.closest(".card").id;
+    $("#output").children().removeClass("active");
+    $("#"+pos).toggleClass("active");
+  });
+
+
 });
+
+function createCard(place){
+  var cardString = "<div id=\"" + place.id + "\" class=\"card\"><div class=\"card-body\"><h5 class=\"card-title\">" + place.name + "</h5><p class=\"card-text\">" + place.memory + "</p><p class=\"card-text\"></p><p class=\"card-text\">ID: " + place.id + "</p></div></div>";
+
+  return cardString;
+}
 
 // Business Logic
 function TravelLog(){
